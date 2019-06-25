@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import QuickExchange from '~/components/QuickExchange.vue'
+import QuickExchange from '~/components/quick-exchange/QuickExchange.vue'
 
 export default {
   components: {

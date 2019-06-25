@@ -1,12 +1,16 @@
 import client from 'api-client'
 
 export const state = () => ({
-  list: []
+  currencies: [],
+  rates: {}
 })
 
 export const mutations = {
   setCurrencies(state, currencies) {
-    state.list = currencies
+    state.currencies = currencies
+  },
+  setRates(state, rates) {
+    state.rates = rates
   }
 }
 
@@ -15,5 +19,10 @@ export const actions = {
     return client
       .fetchCurrencies()
       .then(currencies => commit('setCurrencies', currencies))
+  },
+  fetchRates({ commit }) {
+    return client
+      .fetchRates()
+      .then(rates => commit('setRates', rates))
   }
 }

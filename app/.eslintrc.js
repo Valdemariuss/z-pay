@@ -14,9 +14,10 @@ module.exports = {
   // add your custom rules here
   rules: {
     'nuxt/no-cjs-in-config': 'off',
+    'vue/singleline-html-element-content-newline': 'off',
+    'vue/multiline-html-element-content-newline': 'off',
     'prefer-const' : 0,
     'no-console': 0,
-    'semi' : 0,
-    'strict': 0
+    'semi' : 0
   }
 }

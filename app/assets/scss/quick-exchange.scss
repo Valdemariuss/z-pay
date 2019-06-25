@@ -1,0 +1,71 @@
+.quick-exchange {
+    display: flex;
+    width: 100%;
+
+    &__thead {
+        min-height: 3em;
+        background-color: #F6F7F9;
+    }
+
+    &__cell {
+        flex-grow: 1;
+        border: 1px solid #ccc;
+    }
+
+    &__hd {
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.quick-exchange-currency {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+
+    &__img {
+        font-size: 1.5em;
+        width: 1em;
+        height: 1em;
+        vertical-align: middle;
+    }
+
+    &__name {
+        white-space: nowrap;
+    }
+}
+
+.quick-exchange-give, .quick-exchange-get {
+    width: 100%;
+    &__item {
+        display: flex;
+        align-items: center;
+
+        padding: 10px;
+        cursor: pointer;
+        border-bottom: 1px solid #ddd;
+        min-height: 5em;
+
+        &._active {
+            background: linear-gradient(90deg, #1DDADA 0%, #2383DB 101.46%);
+        }
+
+        &:hover {
+            // background: linear-gradient(90deg, #1DDADA 0%, #2383DB 101.46%);
+            background-color: #ccc;
+        }
+    }
+}
+
+.quick-exchange-get {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(50px, 1fr));
+
+  &__item,  .quick-exchange__thead {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(50px, 1fr));
+  }
+}

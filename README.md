@@ -12,5 +12,3 @@ Nginx will be available on `localhost:80` and nuxt on `localhost:3000`.
 ```bash
 docker-compose build
 ```
-
-[More info](docs/docker.md)
