@@ -1,40 +1,48 @@
 <template>
   <div class="quick-exchange">
     <div class="quick-exchange__cell">
-      <div class="quick-exchange-give">
-        <div class="quick-exchange__thead">
-          <h3 class="quick-exchange__hd">You give</h3>
-        </div>
-        <div
-          v-for="currencie in giveItems"
-          :key="currencie.id"
-          :class="{ _active: (currencie.id === currGive)}"
-          class="quick-exchange-give__item"
-          @click="setGive(currencie.id)"
-        >
-          <quick-exchange-currency :currencie="currencie" />
+      <div class="quick-exchange-give" :class="{ _modal: giveModal}" @click="modalOpen('giveModal')">
+        <div class="quick-exchange-give__box">
+          <div class="quick-exchange__thead">
+            <span v-if="giveModal" class="quick-exchange__close" @click="modalClose">X</span>
+            <h3 class="quick-exchange__hd">You give</h3>
+          </div>
+          <div
+            v-for="currencie in giveItems"
+            :key="currencie.id"
+            :class="{ _active: (currencie.id === currGive)}"
+            class="quick-exchange-give__item"
+            @click="setGive(currencie.id)"
+          >
+            <quick-exchange-currency :currencie="currencie" />
+          </div>
         </div>
       </div>
     </div>
     <div class="quick-exchange__cell">
-      <div class="quick-exchange-get">
-        <div class="quick-exchange__thead">
-          <div class="quick-exchange-get__cell"><h3 class="quick-exchange__hd">You get</h3></div>
-          <div class="quick-exchange-get__cell">RATE</div>
-          <div class="quick-exchange-get__cell">Reserve</div>
-        </div>
-        <div
-          v-for="currencie in getItems"
-          :key="currencie.id"
-          :class="{ _active: (currencie.id === currGet)}"
-          class="quick-exchange-get__item"
-          @click="setGet(currencie.id)"
-        >
-          <div class="quick-exchange-get__cell">
-            <quick-exchange-currency :currencie="currencie" />
+      <div class="quick-exchange-get" :class="{ _modal: getModal}" @click="modalOpen('getModal')">
+        <div class="quick-exchange-get__box">
+          <div class="quick-exchange__thead">
+            <div class="quick-exchange-get__cell">
+              <span v-if="getModal" class="quick-exchange__close" @click="modalClose">X</span>
+              <h3 class="quick-exchange__hd">You get</h3>
+            </div>
+            <div class="quick-exchange-get__cell">RATE</div>
+            <div class="quick-exchange-get__cell">Reserve</div>
           </div>
-          <div class="quick-exchange-get__cell">{{ getRate(currencie.id) }}</div>
-          <div class="quick-exchange-get__cell">{{ currencie.reserve }}</div>
+          <div
+            v-for="currencie in getItems"
+            :key="currencie.id"
+            :class="{ _active: (currencie.id === currGet)}"
+            class="quick-exchange-get__item"
+            @click="setGet(currencie.id)"
+          >
+            <div class="quick-exchange-get__cell">
+              <quick-exchange-currency :currencie="currencie" />
+            </div>
+            <div class="quick-exchange-get__cell">{{ getRate(currencie.id) }}</div>
+            <div class="quick-exchange-get__cell">{{ currencie.reserve }}</div>
+          </div>
         </div>
       </div>
     </div>
@@ -65,7 +73,9 @@ export default {
       startGetItems: [],
       rates: {},
       currGive: 'btc',
-      currGet: 'eth'
+      currGet: 'eth',
+      giveModal: false,
+      getModal: false
     }
   },
   computed: {
@@ -104,6 +114,21 @@ export default {
         } catch (err) { }
       }
       return res;
+    },
+    modalOpen(key) {
+      const flag = this[key]
+      console.warn('flag - ' + flag)
+      if (flag) { return }
+      const wWidth = window.innerWidth
+      if (wWidth <= 800) {
+        this[key] = true
+        console.warn('open - ' + key)
+      }
+    },
+    modalClose(e) {
+      e.stopPropagation()
+      this.giveModal = false
+      this.getModal = false
     }
   }
 }

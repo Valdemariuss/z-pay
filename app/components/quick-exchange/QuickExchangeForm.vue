@@ -4,14 +4,14 @@
     <div class="quick-exchange-form__item">
       <label class="quick-exchange-form__label">You give</label>
       <div class="quick-exchange-form__input">
-        <input v-model="give" type="number" required>
+        <input v-model.number="give" type="number" required>
         <span>{{ data.give | uppercase }}</span>
       </div>
       <div class="quick-exchange-form__sep">
         <img :src="'/img/svg/quick_exchange_form_sep.svg'" alt="">
       </div>
       <div class="quick-exchange-form__input">
-        <input v-model="get" type="number" required>
+        <input v-model.number="get" type="number" required>
         <span>{{ data.get | uppercase }}</span>
       </div>
     </div>
