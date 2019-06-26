@@ -6,34 +6,9 @@
         display: block;
     }
 
-    &__thead {
-        min-height: 3em;
-        background-color: #F6F7F9;
-    }
-
     &__cell {
         flex-grow: 1;
         border: 1px solid #ccc;
-    }
-
-    &__hd {
-        display: block;
-        margin: 0;
-        padding: 0;
-    }
-
-    &__close {
-        display: inline-block;
-        padding: 0.5em;
-        margin: 0;
-        border-radius: 50%;
-        cursor: pointer;
-        position: fixed;
-        top: 10px;
-
-        @media screen and (min-width: 800px){
-            display: none;
-        }
     }
 }
 
@@ -58,7 +33,7 @@
     }
 }
 
-.quick-exchange-give, .quick-exchange-get {
+.quick-exchange-list {
     display: block;
     padding: 0;
     margin: 0;
@@ -71,74 +46,15 @@
         box-sizing: border-box;
     }
 
-    @media screen and (max-width: 800px) {
-        &._modal {
-            position: fixed;
-            left: 0;
-            top: 0;
-            z-index: 101;
-            box-sizing: border-box;
-            width: 100vw;
-            height: 100vh;
-            overflow: auto;
-            background-color: #fff;
+    &__thead {
+        min-height: 3em;
+        background-color: #F6F7F9;
+    }
 
-            .quick-exchange {
-                &-give, &-get {
-                    &__box {
-                        display: block;
-                        box-sizing: border-box;
-                        width: 100%;
-                        min-width: 320px;
-                    }
-                }
-
-                &__hd {
-                    display: inline-block;
-                    margin-left: 30px;
-                }
-            }
-        }
-
-        &:not(._modal) {
-            .quick-exchange {
-                &-give, &-get {
-
-                    &__cell {
-                        padding: 0;
-
-                        &:not(:first-of-type) {
-                            display: none;
-                        }
-                    }
-
-                    &__item {
-                        display: flex;
-
-                        &:not(._active) {
-                            display: none;
-                        }
-
-                        &._active {
-                            &:after {
-                                content: "";
-                                display: inline-block;
-                                padding: 0;
-                                margin: auto 0 auto auto;
-                                cursor: pointer;
-                                width: 0;
-                                height: 0;
-                                overflow: hidden;
-                                font-size: 10px;
-                                border-left: 1em solid transparent;
-                                border-right: 1em solid transparent;
-                                border-top: 1em solid currentColor;
-                            }
-                        }
-                    }
-                }
-            }
-        }
+    &__hd {
+        display: block;
+        margin: 0;
+        padding: 0;
     }
 
     &__item {
@@ -163,18 +79,97 @@
         overflow-x: hidden;
         text-overflow: ellipsis;
     }
-}
 
-.quick-exchange-get {
+    &__close {
+        display: none;
+    }
 
-  &__box {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(50px, 1fr));
-  }
+    &._get {
+        .quick-exchange-list {
+            &__box {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(50px, 1fr));
+            }
 
-  &__item,  .quick-exchange__thead {
-      grid-column: 1 / -1;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(50px, 1fr));
-  }
+            &__item,  &__thead {
+                grid-column: 1 / -1;
+                display: grid;
+                grid-template-columns: repeat(3, minmax(50px, 1fr));
+            }
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+        &._modal {
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 101;
+            box-sizing: border-box;
+            width: 100vw;
+            height: 100vh;
+            overflow: auto;
+            background-color: #fff;
+
+            .quick-exchange-list {
+                &__close {
+                    display: inline-block;
+                    padding: 0.5em;
+                    margin: 0;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    position: fixed;
+                    top: 10px;
+                }
+                &__box {
+                    display: block;
+                    box-sizing: border-box;
+                    width: 100%;
+                    min-width: 320px;
+                }
+
+                &__hd {
+                    display: inline-block;
+                    margin-left: 30px;
+                }
+            }
+        }
+
+        &:not(._modal) {
+            .quick-exchange-list {
+                &__cell {
+                    padding: 0;
+
+                    &:not(:first-of-type) {
+                        display: none;
+                    }
+                }
+
+                &__item {
+                    display: flex;
+
+                    &:not(._active) {
+                        display: none;
+                    }
+
+                    &._active {
+                        &:after {
+                            content: "";
+                            display: inline-block;
+                            padding: 0;
+                            margin: auto 0 auto auto;
+                            cursor: pointer;
+                            width: 0;
+                            height: 0;
+                            overflow: hidden;
+                            font-size: 10px;
+                            border-left: 1em solid transparent;
+                            border-right: 1em solid transparent;
+                            border-top: 1em solid currentColor;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

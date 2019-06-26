@@ -1,17 +1,17 @@
 <template>
   <div class="quick-exchange">
     <div class="quick-exchange__cell">
-      <div class="quick-exchange-give" :class="{ _modal: giveModal}" @click="modalOpen('giveModal')">
-        <div class="quick-exchange-give__box">
-          <div class="quick-exchange__thead">
-            <span v-if="giveModal" class="quick-exchange__close" @click="modalClose">X</span>
-            <h3 class="quick-exchange__hd">You give</h3>
+      <div class="quick-exchange-list" :class="{ _modal: giveModal}" @click="modalOpen('giveModal')">
+        <div class="quick-exchange-list__box">
+          <div class="quick-exchange-list__thead">
+            <span v-if="giveModal" class="quick-exchange-list__close" @click="modalClose">X</span>
+            <h3 class="quick-exchange-list__hd">You give</h3>
           </div>
           <div
             v-for="currencie in giveItems"
             :key="currencie.id"
             :class="{ _active: (currencie.id === currGive)}"
-            class="quick-exchange-give__item"
+            class="quick-exchange-list__item"
             @click="setGive(currencie.id)"
           >
             <quick-exchange-currency :currencie="currencie" />
@@ -20,36 +20,36 @@
       </div>
     </div>
     <div class="quick-exchange__cell">
-      <div class="quick-exchange-get" :class="{ _modal: getModal}" @click="modalOpen('getModal')">
-        <div class="quick-exchange-get__box">
-          <div class="quick-exchange__thead">
-            <div class="quick-exchange-get__cell">
-              <span v-if="getModal" class="quick-exchange__close" @click="modalClose">X</span>
-              <h3 class="quick-exchange__hd">You get</h3>
+      <div class="quick-exchange-list _get" :class="{ _modal: getModal}" @click="modalOpen('getModal')">
+        <div class="quick-exchange-list__box">
+          <div class="quick-exchange-list__thead">
+            <div class="quick-exchange-list__cell">
+              <span v-if="getModal" class="quick-exchange-list__close" @click="modalClose">X</span>
+              <h3 class="quick-exchange-list__hd">You get</h3>
             </div>
-            <div class="quick-exchange-get__cell">RATE</div>
-            <div class="quick-exchange-get__cell">Reserve</div>
+            <div class="quick-exchange-list__cell">RATE</div>
+            <div class="quick-exchange-list__cell">Reserve</div>
           </div>
           <div
             v-for="currencie in getItems"
             :key="currencie.id"
             :class="{ _active: (currencie.id === currGet)}"
-            class="quick-exchange-get__item"
+            class="quick-exchange-list__item"
             @click="setGet(currencie.id)"
           >
-            <div class="quick-exchange-get__cell">
+            <div class="quick-exchange-list__cell">
               <quick-exchange-currency :currencie="currencie" />
             </div>
-            <div class="quick-exchange-get__cell">{{ getRate(currencie.id) }}</div>
-            <div class="quick-exchange-get__cell">{{ currencie.reserve }}</div>
+            <div class="quick-exchange-list__cell">{{ getRate(currencie.id) }}</div>
+            <div class="quick-exchange-list__cell">{{ currencie.reserve }}</div>
           </div>
         </div>
       </div>
     </div>
     <div class="quick-exchange__cell">
       <div class="quick-exchange-exchange">
-        <div class="quick-exchange__thead">
-          <h3 class="quick-exchange__hd">Exchange</h3>
+        <div class="quick-exchange-list__thead">
+          <h3 class="quick-exchange-list__hd">Exchange</h3>
         </div>
         <quick-exchange-form :data="formData" />
       </div>
