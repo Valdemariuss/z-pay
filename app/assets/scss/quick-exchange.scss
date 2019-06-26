@@ -62,7 +62,9 @@
         align-items: center;
         padding: 10px 0;
         cursor: pointer;
-        border-bottom: 1px solid #ddd;
+        box-sizing: border-box;
+        border: 1px solid transparent;
+        border-bottom-color: #ddd;
         min-height: 5em;
 
         &._active {
@@ -70,7 +72,7 @@
         }
 
         &:hover {
-            background-color: #ccc;
+            border-color: #ccc;
         }
     }
 
