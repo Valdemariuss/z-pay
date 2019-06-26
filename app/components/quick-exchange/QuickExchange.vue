@@ -72,8 +72,8 @@ export default {
       startGiveItems: [],
       startGetItems: [],
       rates: {},
-      currGive: 'btc',
-      currGet: 'eth',
+      currGive: null,
+      currGet: null,
       giveModal: false,
       getModal: false
     }
@@ -93,10 +93,8 @@ export default {
     this.loading = true
     this.$store.dispatch('QuickExchange/fetchCurrencies')
       .then(() => {
-        const list = this.$store.state.QuickExchange.currencies
         this.loading = false
-        this.startGiveItems = list.filter(item => item.isGive)
-        this.startGetItems = list.filter(item => item.isGet)
+        this.init()
       })
     this.$store.dispatch('QuickExchange/fetchRates')
       .then(() => {
@@ -106,6 +104,13 @@ export default {
   methods: {
     setGive(id) { this.currGive = id },
     setGet(id) { this.currGet = id },
+    init() {
+      const list = this.$store.state.QuickExchange.currencies
+      this.startGiveItems = list.filter(item => item.isGive)
+      this.startGetItems = list.filter(item => item.isGet)
+      this.currGive = this.giveItems[0].id;
+      this.currGet = this.getItems[0].id;
+    },
     getRate(id) {
       let res = ''
       if (this.currGive && id) {
@@ -116,13 +121,8 @@ export default {
       return res;
     },
     modalOpen(key) {
-      const flag = this[key]
-      console.warn('flag - ' + flag)
-      if (flag) { return }
-      const wWidth = window.innerWidth
-      if (wWidth <= 800) {
+      if (!this[key] && window.innerWidth <= 800) {
         this[key] = true
-        console.warn('open - ' + key)
       }
     },
     modalClose(e) {
