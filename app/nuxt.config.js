@@ -29,6 +29,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
+    {src: "~/assets/scss/index.scss", lang: 'sass'}
   ],
   /*
   ** Plugins to load before mounting the App
@@ -56,6 +57,7 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    extractCSS: true,
     /*
     ** You can extend webpack config here
     */

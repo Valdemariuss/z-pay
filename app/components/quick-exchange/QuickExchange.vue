@@ -81,7 +81,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-  @import '~/assets/scss/quick-exchange.scss'
-</style>
