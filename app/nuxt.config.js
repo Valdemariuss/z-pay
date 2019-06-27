@@ -48,6 +48,12 @@ module.exports = {
     '@nuxtjs/svg-sprite',
   ],
   /*
+  ** Svg symbol sprites config
+  */
+  svgSprite: {
+    output: '~/static/svg-sprites'
+  },
+  /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
