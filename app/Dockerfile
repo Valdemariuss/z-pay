@@ -1,4 +1,4 @@
-FROM node:10.16
+FROM node:12.4.0
 
 ENV APP_ROOT /usr/src/app
 

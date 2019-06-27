@@ -44,6 +44,7 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/eslint-module',
+    '@nuxtjs/svg-sprite',
   ],
   /*
   ** Axios module configuration
