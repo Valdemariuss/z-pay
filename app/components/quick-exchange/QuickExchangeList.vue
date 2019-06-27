@@ -2,17 +2,13 @@
   <div class="quick-exchange-list" :class="{ _modal: modal, _get: mode === 'get'}" @click="modalOpen">
     <div class="quick-exchange-list__box">
       <div class="quick-exchange-list__thead">
-        <template v-if="mode === 'get'">
-          <div class="quick-exchange-list__cell">
-            <span v-if="modal" class="quick-exchange-list__close" @click="modalClose">X</span>
-            <h3 class="quick-exchange-list__hd">{{ hd }}</h3>
-          </div>
-          <div class="quick-exchange-list__cell">RATE</div>
-          <div class="quick-exchange-list__cell">Reserve</div>
-        </template>
-        <template v-else>
+        <div class="quick-exchange-list__cell">
           <span v-if="modal" class="quick-exchange-list__close" @click="modalClose">X</span>
           <h3 class="quick-exchange-list__hd">{{ hd }}</h3>
+        </div>
+        <template v-if="mode === 'get'">
+          <div class="quick-exchange-list__cell">RATE</div>
+          <div class="quick-exchange-list__cell">RESERVE</div>
         </template>
       </div>
       <div
@@ -22,15 +18,12 @@
         class="quick-exchange-list__item"
         @click="$emit('on-set-item', currencie.id)"
       >
-        <template v-if="mode === 'get'">
-          <div class="quick-exchange-list__cell">
-            <quick-exchange-currency :currencie="currencie" />
-          </div>
-          <div class="quick-exchange-list__cell">{{ $parent.getRate(currencie.id) }}</div>
-          <div class="quick-exchange-list__cell">{{ currencie.reserve }}</div>
-        </template>
-        <template v-else>
+        <div class="quick-exchange-list__cell">
           <quick-exchange-currency :currencie="currencie" />
+        </div>
+        <template v-if="mode === 'get'">
+          <div class="quick-exchange-list__cell"><b>{{ $parent.getRate(currencie.id) }}</b></div>
+          <div class="quick-exchange-list__cell">{{ currencie.reserve }}</div>
         </template>
       </div>
     </div>
