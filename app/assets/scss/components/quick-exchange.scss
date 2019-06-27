@@ -1,6 +1,7 @@
 .quick-exchange {
     display: flex;
     width: 100%;
+    background: #fff;
 
     @media screen and (max-width: 800px){
         display: block;
@@ -8,7 +9,6 @@
 
     &__cell {
         flex-grow: 1;
-        border: 1px solid #ccc;
     }
 }
 
@@ -56,9 +56,19 @@
         box-sizing: border-box;
     }
 
+    &__thead, &__item {
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        min-height: 50px;
+        padding: 10px 0;
+        margin: 0;
+        border-bottom: 1px solid #E1E8F3;
+        background: linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 58.53%, #F6F7F9 100%);
+    }
+
     &__thead {
-        min-height: 3em;
-        background-color: #F6F7F9;
+        min-height: 80px;
     }
 
     &__hd {
@@ -68,14 +78,7 @@
     }
 
     &__item {
-        display: flex;
-        align-items: center;
-        padding: 10px 0;
         cursor: pointer;
-        box-sizing: border-box;
-        border: 1px solid transparent;
-        border-bottom-color: #ddd;
-        min-height: 5em;
 
         &._active {
             background: linear-gradient(90deg, #1DDADA 0%, #2383DB 101.46%);
@@ -107,6 +110,10 @@
                 grid-column: 1 / -1;
                 display: grid;
                 grid-template-columns: repeat(3, minmax(50px, 1fr));
+            }
+
+            &__item {
+                background: linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 85.94%, #F6F7F9 100%);
             }
         }
     }
