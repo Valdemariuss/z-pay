@@ -8,7 +8,7 @@
         <span>{{ data.give | uppercase }}</span>
       </div>
       <div class="quick-exchange-form__sep">
-        <img :src="'/img/svg/quick_exchange_form_sep.svg'" alt="">
+        <svg-icon class="svg-icon quick-exchange-form__sep-icon" :name="'icons/arrow-double-down'" />
       </div>
       <div class="quick-exchange-form__input">
         <input v-model.number="get" type="number" required>

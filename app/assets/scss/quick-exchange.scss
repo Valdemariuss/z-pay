@@ -1,3 +1,9 @@
+.svg-icon {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
 .quick-exchange {
     display: flex;
     width: 100%;
@@ -17,26 +23,25 @@
     margin: 0;
     padding: 0;
     white-space: nowrap;
+    overflow: hidden;
 
-    &__img {
-        font-size: 2.5em;
-        width: 1em;
-        height: 1em;
+    &__icon {
+        display: inline-block;
+        padding: 0;
+        margin: 1px;
+        width: 32px;
+        height: 32px;
+        box-sizing: border-box;
         vertical-align: middle;
-
-        &._symbol {
-            // font-size: 2em;
-            // display: inline-block;
-            // padding: 0.1em 0.05em 0 0.05em;
-            // margin: 2px;
-            // background-color: #fff;
-            // border: 1px solid rgba(0, 0, 0, 0.05);
-            // box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-            // border-radius: 50%;
-        }
+        font-size: 0;
+        background-color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 50%;
     }
 
     &__name {
+        vertical-align: middle;
         white-space: nowrap;
         @media screen and (max-width: 800px){
             white-space: normal;
@@ -183,6 +188,21 @@
                     }
                 }
             }
+        }
+    }
+}
+
+.quick-exchange-form {
+    &__sep {
+        display: block;
+        padding: 0.5em 0;
+        margin: 0;
+        color: #20B2DB;
+        text-align: center;
+
+        &-icon {
+            width: 32px;
+            height: 32px;
         }
     }
 }
