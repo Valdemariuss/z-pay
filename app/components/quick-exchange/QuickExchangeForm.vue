@@ -4,7 +4,13 @@
     <div class="quick-exchange-form__item">
       <label class="quick-exchange-form__label">You give</label>
       <div class="title-input">
-        <input v-model.number="give" class="title-input__inp" type="text" required>
+        <input
+          v-model.number="give"
+          class="title-input__inp"
+          type="number"
+          required
+          @input="setGet"
+        >
         <span class="title-input__title">{{ data.give | uppercase }}</span>
       </div>
     </div>
@@ -14,7 +20,13 @@
     <div class="quick-exchange-form__item">
       <label class="quick-exchange-form__label">You receive</label>
       <dir class="title-input">
-        <input v-model.number="get" class="title-input__inp" type="text" required>
+        <input
+          v-model.number="get"
+          class="title-input__inp"
+          type="number"
+          required
+          @input="setGive"
+        >
         <span class="title-input__title">{{ data.get | uppercase }}</span>
       </dir>
     </div>
@@ -40,8 +52,37 @@ export default {
       get: 0
     }
   },
+  updated() {
+    this.setGet()
+  },
   methods: {
     submit() {
+    },
+    getRate() {
+      let rate = this.$props.data.rate.replace(',', '')
+      return parseFloat(rate)
+    },
+    setGive() {
+      const val = parseFloat(this.get)
+      let res = 0
+      if (val) {
+        const rate = this.getRate()
+        if (rate && rate > 0) {
+          res = val / rate
+        }
+      }
+      this.give = res
+    },
+    setGet() {
+      const val = parseFloat(this.give)
+      let res = 0
+      if (val) {
+        const rate = this.getRate()
+        if (rate && rate > 0) {
+          res = val * rate
+        }
+      }
+      this.get = res
     }
   }
 }
