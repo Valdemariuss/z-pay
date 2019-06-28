@@ -27,6 +27,16 @@
         </template>
       </div>
     </div>
+    <template v-if="mode === 'get'">
+      <div class="quick-exchange-list-mob-curr">
+        <div class="quick-exchange-list-mob-curr__item">
+          <span>Rate</span>{{ $parent.getRate(currItem) }}
+        </div>
+        <div class="quick-exchange-list-mob-curr__item">
+          <span>Reserve</span>{{ $parent.getReserve() }}
+        </div>
+      </div>
+    </template>
   </div>
 </template>
 

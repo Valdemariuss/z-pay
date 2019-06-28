@@ -77,6 +77,16 @@ export default {
         } catch (err) { }
       }
       return res;
+    },
+    getReserve() {
+      let res = ''
+      this.startGetItems.find((item) => {
+        if (item.id === this.currGet) {
+          res = item.reserve
+          return true
+        }
+      })
+      return res;
     }
   }
 }
